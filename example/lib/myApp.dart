@@ -273,7 +273,7 @@ textRes = text;
     });
   }
 
-  void onRecognitionComplete(s) => setState(() => _isListening = false);
+  void onRecognitionComplete() => setState(() => _isListening = false);
 
   void errorHandler() => activateSpeechRecognizer();
   requestPermission() async {

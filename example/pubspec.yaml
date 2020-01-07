@@ -13,7 +13,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   flare_flutter: any
-  # speech_recognition: "^0.3.0"
+  speech_recognition: "^0.3.0"
   toast: any
   permission: any
   permission_handler: ^3.0.0  
@@ -27,8 +27,8 @@ dev_dependencies:
 
   flutter_bluetooth_serial:
     path: ../
-  speech_recognition:
-    path: ../../speech_recognition_master/
+  # speech_recognition:
+  #   path: ../../speech_recognition_master/
 flutter:
   uses-material-design: true
 
