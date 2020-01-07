@@ -7,9 +7,9 @@ import 'package:scoped_model/scoped_model.dart';
 
 import './DiscoveryPage.dart';
 import './SelectBondedDevicePage.dart';
-import './ChatPage.dart';
-import './BackgroundCollectingTask.dart';
-import './BackgroundCollectedPage.dart';
+// import './ChatPage.dart';
+// import './BackgroundCollectingTask.dart';
+// import './BackgroundCollectedPage.dart';
 
 //import './LineChart.dart';
 
@@ -29,7 +29,7 @@ class _MainPage extends State<MainPage> {
   Timer _discoverableTimeoutTimer;
   int _discoverableTimeoutSecondsLeft = 0;
 
-  BackgroundCollectingTask _collectingTask;
+  // BackgroundCollectingTask _collectingTask;
   FlutterBluetoothSerial serial;
   bool _autoAcceptPairingRequests = false;
   bool get isConnected => connection != null && connection.isConnected;
@@ -93,7 +93,7 @@ class _MainPage extends State<MainPage> {
   @override
   void dispose() {
     FlutterBluetoothSerial.instance.setPairingRequestHandler(null);
-    _collectingTask?.dispose();
+    // _collectingTask?.dispose();
     _discoverableTimeoutTimer?.cancel();
     super.dispose();
   }
@@ -363,40 +363,40 @@ class _MainPage extends State<MainPage> {
     connection = null;
   }
 
-  void _startChat(BuildContext context, BluetoothDevice server) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return ChatPage(server: server);
-    }));
-  }
+  // void _startChat(BuildContext context, BluetoothDevice server) {
+  //   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+  //     return ChatPage(server: server);
+  //   }));
+  // }
 
-  Future<void> _startBackgroundTask(
-      BuildContext context, BluetoothDevice server) async {
-    try {
-      _collectingTask = await BackgroundCollectingTask.connect(server);
-      await _collectingTask.start();
-    } catch (ex) {
-      if (_collectingTask != null) {
-        _collectingTask.cancel();
-      }
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Error occured while connecting'),
-            content: Text("${ex.toString()}"),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text("Close"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
+  // Future<void> _startBackgroundTask(
+  //     BuildContext context, BluetoothDevice server) async {
+  //   try {
+  //     _collectingTask = await BackgroundCollectingTask.connect(server);
+  //     await _collectingTask.start();
+  //   } catch (ex) {
+  //     if (_collectingTask != null) {
+  //       _collectingTask.cancel();
+  //     }
+  //     showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertDialog(
+  //           title: const Text('Error occured while connecting'),
+  //           content: Text("${ex.toString()}"),
+  //           actions: <Widget>[
+  //             new FlatButton(
+  //               child: new Text("Close"),
+  //               onPressed: () {
+  //                 Navigator.of(context).pop();
+  //               },
+  //             ),
+  //           ],
+  //         );
+  //       },
+  //     );
+  //   }
+  // }
 
   Future _showDialogue() {
     return showDialog(
